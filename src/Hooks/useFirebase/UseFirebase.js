@@ -12,6 +12,7 @@ const useFirebase = () => {
 
     //---------login/register using Google--------//
     const googleSignIn = (location,navigate) => {
+        setLoading(true);
         const auth = getAuth();
         signInWithPopup(auth, provider)
             .then((result) => {
@@ -20,16 +21,17 @@ const useFirebase = () => {
                 navigate(redirect_uri)
             }).catch((error) => {
                 setError(error.message);
-            });
+            }).finally(() => setLoading(false));
     };
     //-----Register users using E-mail and Password-------//
     const registerUser = (email, password, name, navigate, reset) => {
+        setLoading(true);
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
           .then((result) => {
               const user={email:email,displayName:name}
             setUser (user);
-            setLoading(false);
+            saveUser(email, name);
              //----update user profile------//
              updateProfile(auth.currentUser, {
                 displayName: name
@@ -50,6 +52,7 @@ const useFirebase = () => {
     };
     //-----Login using Email and Password-----//
     const loginUser = (email, password, navigate,location) => {
+        setLoading(true);
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -65,12 +68,13 @@ const useFirebase = () => {
     };
     //-------logout---------//
     const logout = () => {
+        setLoading(true);
         const auth = getAuth();
         signOut(auth).then(() => {
             setUser('');
         }).catch((error) => {
             setError(error.message)
-        });
+        }).finally(() => setLoading(false));
     };
     //------manage Users-------//
     useEffect(() => {
@@ -82,9 +86,22 @@ const useFirebase = () => {
             else {
                 setUser({});
             }
+            setLoading(false);
         });
         return unsubsCribed;
     }, []);
+    //save users
+    const saveUser = (email, name) => {
+        const user = { email, name };
+        fetch('https://protected-bastion-33246.herokuapp.com/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    };
     return {
         googleSignIn, error, user, logout, registerUser,loading,loginUser
     }

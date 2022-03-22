@@ -7,8 +7,16 @@ import useAuth from '../../Hooks/useAuth/useAuth';
 
 const Form = () => {
     const {user}=useAuth();
-    const patientInfo={name:'',eamil:'',people:'',time:'',date:'',number:''}
-    const [info, setinfo]=useState({userInfo: patientInfo});
+    const patientInfo={name:'',eamil:user.email,time:'',date:'',number:''};
+    const [info, setinfo]=useState(patientInfo);
+    const getData=(e)=>{    
+        const field = e.target.name;
+        const value = e.target.value;
+        const newInfo = {...info};
+        newInfo[field] = value;
+        setinfo(newInfo);
+    
+        }
     const submitForm=(e)=>{
         e.preventDefault();
         const appointment = {...info}
@@ -18,15 +26,6 @@ const Form = () => {
                 alert('Order Placed Successfully');
             }
         })
-    }
-    const getData=(e)=>{    
-    const field = e.target.name;
-    const value = e.target.value;
-    const newInfo = {...info};
-    newInfo[field] = value;
-    // console.log(info);
-    setinfo(newInfo);
-
     }
     return (
         <div style={{backgroundImage:`url(${bgImage})`}} className='main_bg'>

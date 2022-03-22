@@ -4,17 +4,13 @@ import useAuth from '../../Hooks/useAuth/useAuth';
 const OrderdAppo = () => {
     const {user}=useAuth()
     const [appo,setAppo]=useState([]);
-    const[order,setOrder]=useState([]);
+    const email=(user?.email)
     useEffect(()=>{
-        fetch('https://protected-bastion-33246.herokuapp.com/appoinments').then(res=>res.json()).then(data=>setAppo(data))
+        fetch(`https://protected-bastion-33246.herokuapp.com/appoinments/${email}`).then(res=>res.json()).then(data=>setAppo(data))
     },[user]);
-useEffect(()=>{
-    const order=appo.filter(test=>test.email===user.email);
-    setOrder(order);
-},[appo,user])
     return (
         <div>
-            {order.length}
+            <h3>Your Ordered Appoinments = {appo.length}</h3>
         </div>
     );
 };

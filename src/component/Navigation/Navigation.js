@@ -16,6 +16,8 @@ const Navigation = () => {
                             <Nav.Link as={Link} to={'/'}>Home</Nav.Link>
                             <Nav.Link as={Link} to={'/doctors'}>Doctors</Nav.Link>
                             <Nav.Link as={Link} to={'/tests'}>Tests</Nav.Link>
+                            {user?.email && 
+                            <Nav.Link as={Link} to={'/dashboard'}>Dashboard</Nav.Link>}
                             <NavDropdown title="Account" id="collasible-nav-dropdown">
                             {user?.email ?
                                 <NavDropdown.Item onClick={logout}> Logout </NavDropdown.Item>

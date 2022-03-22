@@ -7,8 +7,8 @@ import useAuth from '../../Hooks/useAuth/useAuth';
 
 const TestForm = () => {
     const {user}=useAuth();
-    const patientInfo={name:'',email:'',test:'',time:'',date:'',number:''}
-    const [info, setinfo]=useState({userInfo: patientInfo});
+    const patientInfo={name:'',email:user.email,test:'',time:'',date:'',number:''}
+    const [info, setinfo]=useState(patientInfo);
    
     const submitForm=(e)=>{
         e.preventDefault();
