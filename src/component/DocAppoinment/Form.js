@@ -10,7 +10,7 @@ const Form = () => {
     const submitForm=(e)=>{
         e.preventDefault();
         const appointment = {...info}
-        axios.post('http://localhost:5000/docappo', appointment)
+        axios.post('https://dashboard.heroku.com/apps/fast-tundra-02981/docappo', appointment)
         .then(function (res) {
             if (res.data.insertedId) {
                 alert('Order Placed Successfully');
