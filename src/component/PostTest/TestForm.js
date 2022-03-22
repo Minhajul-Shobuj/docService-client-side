@@ -11,7 +11,7 @@ const TestForm = () => {
     const submitForm=(e)=>{
         e.preventDefault();
         const appointment = {...info}
-        axios.post('http://localhost:5000/testOrders', appointment)
+        axios.post('https://protected-bastion-33246.herokuapp.com/tests', appointment)
         .then(function (res) {
             if (res.data.insertedId) {
                 alert('Order Placed Successfully');
