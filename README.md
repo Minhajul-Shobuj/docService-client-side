@@ -1,8 +1,8 @@
 # E-Smarts Website
 
-Website Live Site ➡ [Link](https://e-smarts.web.app/)
+Website Live Site ➡ [Link](https://docservice-62983.web.app/)
 
-Server Side Code ➡ [Link](https://github.com/Minhajul-Shobuj/e-smart-server)
+Server Side Code ➡ [Link](https://github.com/Minhajul-Shobuj/docService-server-code)
 
 Client Side Code ➡ [Link](https://github.com/Minhajul-Shobuj/docService-client-side)
 
