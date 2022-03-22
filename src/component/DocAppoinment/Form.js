@@ -3,8 +3,10 @@ import bgImage from '../../images/background.jpg'
 import art1 from '../../images/art-1.png'
 import './Form.css'
 import axios from 'axios';
+import useAuth from '../../Hooks/useAuth/useAuth';
 
 const Form = () => {
+    const {user}=useAuth();
     const patientInfo={name:'',eamil:'',people:'',time:'',date:'',number:''}
     const [info, setinfo]=useState({userInfo: patientInfo});
     const submitForm=(e)=>{
@@ -41,12 +43,12 @@ const Form = () => {
                 </div>
                 <div>
                     <span>Your email address ?</span>
-                    <input onChange={getData} type="email" name="email" id="email" placeholder="Write your email here..." required /> 
+                    <input onChange={getData} type="email" name="email" id="email" value={user.email} disabled /> 
                 </div>
                 <div>
                 {/* this is the select option */}
-                    <span>Name of Doctor ?</span>
-                    <input onChange={getData} type="text" name="doctor" id="doctor" placeholder="Write your email here..." required /> 
+                    <span>Doctor Name ?</span>
+                    <input onChange={getData} type="text" name="doctor" id="doctor" placeholder="Write doctor name here..." required /> 
                     {/* this is the select option */}
                 </div>
                 <div>

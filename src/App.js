@@ -11,6 +11,7 @@ import DocAppoinment from './component/DocAppoinment/DocAppoinment';
 import PostTest from './component/PostTest/PostTest';
 import Doctors from './component/Doctors/Doctors';
 import Tests from './component/Test/Tests';
+import Dashboard from './component/dashboard/Dashboard';
 function App() {
   return (
     <div className="App">
@@ -24,6 +25,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/doctors" element={<Doctors />} />
           <Route path="/tests" element={<Tests />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/appointment/:id" element={<PrivateRoute> <DocAppoinment/> </PrivateRoute>} />
           <Route path="/test/:id" element={<PrivateRoute> <PostTest /> </PrivateRoute>} />
           <Route path="*" element={<NotFound />} />

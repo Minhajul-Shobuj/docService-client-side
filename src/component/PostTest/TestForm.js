@@ -3,15 +3,17 @@ import bgImage from '../../images/background.jpg'
 import art1 from '../../images/art-1.png'
 import '../DocAppoinment/Form.css'
 import axios from 'axios';
+import useAuth from '../../Hooks/useAuth/useAuth';
 
 const TestForm = () => {
+    const {user}=useAuth();
     const patientInfo={name:'',email:'',test:'',time:'',date:'',number:''}
     const [info, setinfo]=useState({userInfo: patientInfo});
    
     const submitForm=(e)=>{
         e.preventDefault();
         const appointment = {...info}
-        axios.post('https://protected-bastion-33246.herokuapp.com/tests', appointment)
+        axios.post('https://protected-bastion-33246.herokuapp.com/testOrders', appointment)
         .then(function (res) {
             if (res.data.insertedId) {
                 alert('Order Placed Successfully');
@@ -42,7 +44,7 @@ const TestForm = () => {
                 </div>
                 <div>
                     <span>Your email address ?</span>
-                    <input onChange={getData} type="email" name="email" id="email" placeholder="Write your email here..." required /> 
+                    <input onChange={getData} type="email" name="email" id="email" value={user.email} disabled /> 
                 </div>
                 <div>
                 {/* this is the select option */}
