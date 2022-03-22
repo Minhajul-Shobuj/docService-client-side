@@ -1,0 +1,13 @@
+.banner {
+  background-color: rgb(126, 238, 238);
+  opacity: 2.8;
+}
+.doctors img {
+  height: 500px;
+}
+.banner-btn-1 {
+  background-color: rgb(30, 233, 165);
+}
+.banner-btn-2 {
+  background-color: rgb(31, 166, 219);
+}
